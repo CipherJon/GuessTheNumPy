@@ -1,52 +1,97 @@
-# Number Guessing Game
+# Number Game
 
-A simple number guessing game implemented in Python.
+This is a number guessing game implemented in Python. The game allows the player to guess a number between 1 and 100, and provides feedback on whether the guess is too low, too high, or correct.
 
-## How to Play
+## Project Structure
 
-- The game will randomly select a number between 1 and 100.
-- You have to guess the number within a limited number of attempts.
-- After each guess, you will receive feedback indicating if your guess was too low, too high, or correct.
-- If you guess the correct number, you win! If you run out of attempts, the game is over.
-
-## Setup
-
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/yourusername/number_guessing_game.git
-   cd number_guessing_game
-   ```
-
-2. (Optional) Create a virtual environment and activate it:
-
-   ```sh
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-## Running the Game
-
-To start the game, run:
-
-```sh
-python main.py
+```
+game/
+    __init__.py
+    __pycache__/
+        __init__.cpython-313.pyc
+        game_logic.cpython-313.pyc
+        player.cpython-313.pyc
+    game_logic.py
+    player.py
+js/
+    game_logic.js
+LICENSE
+main.py
+README.md
+requirements.txt
+tests/
+    __init__.py
+    __pycache__/
+        test_game_logic.cpython-313.pyc
+        test_player.cpython-313.pyc
+    test_game_logic.py
+    test_player.py
+utils/
+    __init__.py
+    helpers.py
 ```
 
-## Running Tests
+## Getting Started
 
-To run the tests, use:
+### Python
 
-```sh
-python -m unittest discover -s tests
-```
+1. Install the required packages:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. Run the game:
+
+    ```bash
+    python main.py
+    ```
+
+### JavaScript
+
+1. Navigate to the `js` directory:
+
+    ```bash
+    cd js
+    ```
+
+2. Install the required packages (if any):
+
+    ```bash
+    npm install
+    ```
+
+3. Run the game logic tests:
+
+    ```bash
+    node game_logic.js
+    ```
+
+### Integrating Python and JavaScript
+
+You can integrate the JavaScript logic with the Python code using a tool like `PyExecJS` which allows you to execute JavaScript code from Python.
+
+1. Install `PyExecJS`:
+
+    ```bash
+    pip install PyExecJS
+    ```
+
+2. Update your Python code to use the JavaScript logic:
+
+    ```python
+    import execjs
+
+    with open('js/game_logic.js') as f:
+        js_code = f.read()
+
+    ctx = execjs.compile(js_code)
+    number_game = ctx.call('NumberGame')
+
+    guess_result = number_game.guess(50)
+    print(guess_result)
+    ```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
